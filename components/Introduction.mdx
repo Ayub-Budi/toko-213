@@ -1,0 +1,40 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Introduction" />
+
+# UI Components
+
+Dokumentasi komponen UI untuk proyek ini. Komponen dikelompokkan per folder sesuai kategorinya: `components/ui/element/` (termasuk `icons/`), `components/ui/form/`, dan `components/layout/`.
+
+| Kategori | Komponen | Import | Keterangan |
+| --- | --- | --- | --- |
+| Element | Button | `import { Button } from "@/components/ui"` | Tombol dengan variant `solid` / `outline` dan size `small` / `medium` / `large` |
+| Element | Icon | `import { Icon } from "@/components/ui"` | `<Icon name="arrow-big-down" />` — ukuran & warna mengikuti class teks (`text-2xl text-blue-700`) |
+| Form | Form | `import { Form } from "@/components/ui"` | Validasi dengan schema Zod: `onSubmit(data, form)` kalau valid; kalau gagal, error tampil otomatis di `<Input>` yang `name`-nya cocok dan `onError([{ name, message }])` dipanggil |
+| Form | Input | `import { Input } from "@/components/ui"` | Input dengan `label` dan `error` opsional; menerima semua props `<input>` bawaan |
+| Layout | Sidebar | `import { Sidebar } from "@/components/layout"` | Menu dari array `NavItem` (`lib/navigation.ts`); mendukung grup `childrens` dan highlight menu aktif |
+
+## Menjalankan
+
+```bash
+bun run storybook        # dev server di http://localhost:6006
+bun run build-storybook  # build statis ke storybook-static/
+```
+
+## Menambah komponen baru
+
+Taruh komponen di folder kategorinya (mis. `components/ui/form/select.tsx`), daftarkan di `index.ts` folder itu (`export { Select } from "./select";`) supaya bisa di-import dari `@/components/ui` (atau `@/components/layout` untuk komponen layout), lalu buat file `nama.stories.tsx` di sebelahnya. Halaman Docs dibuat otomatis (autodocs) dari props TypeScript-nya.
+
+Isi `title` di stories dengan format `Kategori/Nama` supaya masuk ke grup yang benar di sidebar:
+
+- `Element/…`: elemen dasar (Button, Icon, Badge, …)
+- `Form/…`: kontrol form (Input, Select, Checkbox, Textarea, …)
+- `Layout/…`: struktur halaman (Sidebar, Header, …)
+
+## Menambah icon
+
+1. Taruh file SVG di `components/ui/element/icons/svg/` dengan nama kebab-case, mis. `arrow-big-down.svg`.
+2. Pakai `currentColor` untuk `stroke`/`fill` di SVG supaya warnanya mengikuti teks.
+3. Jalankan `bun run icons` (otomatis juga saat `dev`, `build`, dan `storybook`).
+4. Icon Lucide: tambahkan nama di `components/ui/element/icons/lucide-icons.json`, lalu pakai `<Icon name="lucide:shopping-cart" />`.
+5. Pakai: `<Icon name="arrow-big-down" />` — nama otomatis muncul di autocomplete TypeScript.

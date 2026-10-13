@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+
+  /* Palet landing page toko */
+  --color-cream: #f7f2ea;
+  --color-sand: #ebe1d2;
+  --color-ink: #2b2420;
+  --color-muted: #6b5d52;
+  --color-clay: #a8462a;
+  --color-clay-dark: #8a3820;
+  --color-moss: #3d4a36;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

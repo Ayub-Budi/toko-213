@@ -1,0 +1,46 @@
+{
+  "name": "setup-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "bun run icons && next dev",
+    "build": "bun run icons && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "icons": "bun scripts/generate-icons.ts",
+    "storybook": "bun run icons && storybook dev -p 6006",
+    "build-storybook": "bun run icons && storybook build"
+  },
+  "dependencies": {
+    "axios": "^1.20.0",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "10.6.1",
+    "@storybook/nextjs-vite": "10.6.1",
+    "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/vite": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.0",
+    "lucide-static": "^1.55.0",
+    "storybook": "10.6.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite": "^8.3.4"
+  },
+  "packageManager": "bun@1.2.22",
+  "ignoreScripts": [
+    "sharp",
+    "unrs-resolver"
+  ],
+  "trustedDependencies": [
+    "sharp",
+    "unrs-resolver"
+  ]
+}
